@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\FormViewController;
+use App\Http\Controllers\DownloadViewController;
+use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +16,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-Route::get('/test', [FormViewController::class, 'index']);
+Route::get('/test', [TokenController::class, 'test']);
 
-Route::get('/TPOinfo', [FormViewController::class, 'getTPOInfo']);
 
-Route::get('/getpath', [FormViewController::class, 'getPath']);
+Route::get('/getToken', [TokenController::class, 'getToken']);
+
+
+
+Route::get('/introspectToken', [TokenController::class, 'introspectToken']);
+
+
+
+Route::get('/download', [DownloadViewController::class, 'index']);
+
+
+Route::get('/getTPOInfo', function () {
+
+    dispatch((new App\Jobs\GetTPOInfoJob));
+    return view('success');
+});
+
+Route::get('/getLoanInfo', function () {
+    dispatch((new App\Jobs\GetLoanInfoJob));
+    return view('success');
+});

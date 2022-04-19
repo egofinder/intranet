@@ -1,20 +1,44 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Jobs;
 
-use Illuminate\Http\Request;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\TeamsNotificationController;
+use App\Models\Token;
 
-class FormViewController extends Controller
+
+class GetLoanInfoJob implements ShouldQueue
 {
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function index()
+    /**
+     * Create a new job instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
+        //
+    }
 
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        $access_token = Token::find(1)->access_token;
         $date = date('Y-m-d', strtotime('-3 years'));
 
-        $response = Http::acceptJson()->accept('application/json')->withToken('0002HjojTCy44JlEnovJcQD5UUV3')->post(
+        $response = Http::acceptJson()->withToken($access_token)->post(
             'https://api.elliemae.com/encompass/v1/loanPipeline?cursorType=randomAccess&limit=1',
             [
                 "sortOrder" => [
@@ -522,7 +546,7 @@ class FormViewController extends Controller
             $start_index = ($i * 250);
             $url_temp = 'https://api.elliemae.com/encompass/v1/loanPipeline?cursor=' . $loan_cursor . '&start=' . $start_index . '&limit=250';
 
-            $response = Http::acceptJson()->accept('application/json')->withToken('0002HjojTCy44JlEnovJcQD5UUV3')->post(
+            $response = Http::acceptJson()->withToken($access_token)->post(
                 "$url_temp",
                 [
                     "fields" => [
@@ -1076,7 +1100,6 @@ class FormViewController extends Controller
                     (isset($item['fields']['Fields.Log.MS.Date.Funding']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Funding'])) : "") . "\t" .
                     ($item['fields']['Fields.799']  ?? "") . "\t" .
                     ($item['fields']['Fields.3238']  ?? "") . "\t" .
-
                     (isset($item['fields']['Fields.3197']) ? date('m/d/Y', strtotime($item['fields']['Fields.3197'])) : "") . "\t" .
                     (isset($item['fields']['Fields.ISPAY.Escrow.1.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.1.DATE'])) : "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.1.ESCROWTYPE']  ?? "") . "\t" .
@@ -1248,9 +1271,6 @@ class FormViewController extends Controller
                     (isset($item['fields']['Fields.CUST46FV']) ? (str_replace("\n", '<BR>', (str_replace("\r", '<BR>', $item['fields']['Fields.CUST46FV'])))) : "") . "\t" .
                     ($item['fields']['Fields.TPO.X61']   ?? "") . "\n";
 
-
-
-
                 $subservicing_data .=
                     ($item['fields']['Fields.364']   ?? "") . "\t" .
                     ($item['fields']['Fields.420']   ?? "") . "\t" .
@@ -1389,162 +1409,13 @@ class FormViewController extends Controller
                     (isset($item['fields']['Fields.1888']) ? (str_replace(',', '', $item['fields']['Fields.1888'])) : "") . "\t" .
                     (isset($item['fields']['Fields.1483']) ? (str_replace(',', '', $item['fields']['Fields.1483'])) : "") . "\t" .
                     (isset($item['fields']['Fields.2211']) ? (str_replace(',', '', $item['fields']['Fields.2211'])) : "") . "\n";
-
-                // $output_TPO .=
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\t" .
-                //     ($item['fields']['Fields.']   ?? "") . "\n";
             }
             Storage::disk('local')->append('encompass_report.txt', $encompass_report, null);
             Storage::disk('local')->append('encompass_buyside.txt', $encompass_buyside, null);
             Storage::disk('local')->append('subservicing_data.txt', $subservicing_data, null);
         }
 
-        $url1 = Storage::url('temp\encompass_report.txt');
-        $url2 = Storage::url('temp\encompass_buyside.txt');
-        $url3 = Storage::url('temp\subservicing_data.txt');
-
-        return view('test', compact('url1', 'url2', 'url3'));
-    }
-
-
-    public function getTPOInfo()
-    {
-
-        Storage::delete('TPOinfo.txt');
-        $output_TPO =
-            "orgtype" . "\t" .
-            "orgname" . "\t" .
-            "disabled" . "\t" .
-            "orgid" . "\t" .
-            "ownername" . "\t" .
-            "complegal" . "\t" .
-            "addresss" . "\t" .
-            "city" . "\t" .
-            "state" . "\t" .
-            "zip" . "\t" .
-            "phonenum" . "\t" .
-            "faxnum" . "\t" .
-            "email" . "\t" .
-            "website" . "\t" .
-            "ratesheet" . "\t" .
-            "ratesheetfax" . "\t" .
-            "lockinfoemail" . "\t" .
-            "lockinfofax" . "\t" .
-            "eppsuser" . "\t" .
-            "eppscomp" . "\t" .
-            "currentstat" . "\t" .
-            "watchlist" . "\t" .
-            "currentstatus" . "\t" .
-            "approved" . "\t" .
-            "application" . "\t" .
-            "primarysales" . "\t" .
-            "primarysalesname" . "\t" .
-            "incorp" . "\t" .
-            "stateincorp" . "\t" .
-            "dateincorp" . "\t" .
-            "entitytype" . "\t" .
-            "otherentity" . "\t" .
-            "taxid" . "\t" .
-            "ssnformat" . "\t" .
-            "nmls" . "\t" .
-            "financials" . "\t" .
-            "financialsupdate" . "\t" .
-            "companyworth" . "\t" .
-            "eoexpire" . "\t" .
-            "eocompany" . "\t" .
-            "eopolicy" . "\t" .
-            "mers" . "\t" .
-            "du" . "\t" .
-            "canfund" . "\t" .
-            "canclose" . "\t" .
-            "TPO ID" . "\t" .
-            "externalid";
-        Storage::disk('local')->put('TPOinfo.txt', $output_TPO);
-
-        for ($i = 0; $i <= 3; $i++) {
-
-            $index = $i * 500;
-            $response = Http::acceptJson()->accept('application/json')->withToken('0002u4P5Ebm1YMPfCgVuOpW3uaXQ')->get('https://api.elliemae.com/encompass/v3/externalOrganizations/tpos?Limit=500&start=' . $index);
-            $decoded = json_decode($response->body(), true);
-            $sample = collect($decoded);
-
-            foreach ($sample as $item) {
-                $output_TPO = null;
-                $output_TPO =
-                    $item['basicInfo']['organizationType'] . "\t" .
-                    $item['basicInfo']['organizationName'] . "\t" .
-                    ($item['basicInfo']['isLoginDisabled'] ? "True" : "False") . "\t" .
-                    ($item['basicInfo']['orgId'] ?? "") . "\t" .
-                    ($item['basicInfo']['companyOwnerName'] ?? "") . "\t" .
-                    ($item['basicInfo']['companyLegalName'] ?? "") . "\t" .
-                    ($item['basicInfo']['address']['street1'] ?? "") . "\t" .
-                    ($item['basicInfo']['address']['city'] ?? "") . "\t" .
-                    ($item['basicInfo']['address']['state'] ?? "") . "\t" .
-                    ($item['basicInfo']['address']['zip'] ?? "") . "\t" .
-                    ($item['basicInfo']['phoneNumber'] ?? "") . "\t" .
-                    ($item['basicInfo']['faxNumber'] ?? "") . "\t" .
-                    ($item['basicInfo']['email'] ?? "") . "\t" .
-                    ($item['basicInfo']['website'] ?? "") . "\t" .
-                    ($item['basicInfo']['rateLockInfo']['rateSheetEmail'] ?? "") . "\t" .
-                    ($item['basicInfo']['rateLockInfo']['rateSheetFax'] ?? "") . "\t" .
-                    ($item['basicInfo']['rateLockInfo']['lockInfoEmail'] ?? "") . "\t" .
-                    ($item['basicInfo']['rateLockInfo']['lockInfoFax'] ?? "") . "\t" .
-                    ($item['basicInfo']['productAndPricing']['eppsUserName'] ?? "") . "\t" .
-                    ($item['basicInfo']['productAndPricing']['eppsCompModel'] ?? "") . "\t" .
-                    ($item['basicInfo']['approvalStatus']['currentStatus'] ?? "") . "\t" .
-                    ($item['basicInfo']['approvalStatus']['addToWatchlist'] ? "True" : "False") . "\t" .
-                    ($item['basicInfo']['approvalStatus']['currentStatusDate'] ?? "") . "\t" .
-                    ($item['basicInfo']['approvalStatus']['approvedDate'] ?? "") . "\t" .
-                    ($item['basicInfo']['approvalStatus']['applicationDate'] ?? "") . "\t" .
-                    ($item['basicInfo']['primarySalesRepAe']['userId'] ?? "") . "\t" .
-                    ($item['basicInfo']['primarySalesRepAe']['name'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['isIncorporated'] ? "True" : "False") . "\t" .
-                    ($item['basicInfo']['businessInformation']['stateOfIncorporation'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['dateOfIncorporation'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['typeOfEntity'] ?? "") . "\t" .
-                    "Other Entity Description" . "\t" .
-                    ($item['basicInfo']['businessInformation']['taxId'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['useSsnFormat'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['nmlsId'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['financialsPeriod'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['financialsLastUpdate'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['companyNetWorth'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['eoExpirationDate'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['eoCompany'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['eoPolicyNumber'] ?? "") . "\t" .
-                    ($item['basicInfo']['businessInformation']['mersOriginatingOrgId'] ?? "") . "\t" .
-                    "DU Sponsored" . "\t" .
-                    (isset($item['basicInfo']['businessInformation']['canFundInOwnName']) ? ($item['basicInfo']['businessInformation']['canFundInOwnName']) : "") . "\t" .
-                    (isset($item['basicInfo']['businessInformation']['canCloseInOwnName']) ? ($item['basicInfo']['businessInformation']['canCloseInOwnName']) : "") . "\t" .
-                    ($item['basicInfo']['tpoId'] ?? "") . "\t" .
-                    ($item['basicInfo']['id'] ?? "");
-
-                Storage::disk('local')->append('TPOinfo.txt', $output_TPO);
-            }
-        }
-        $url1 = Storage::url('temp\TPOinfo.txt');
-
-        return view('test2')->with('url1', $url1);
-    }
-    public function getPath()
-    {
-        $date = date('Y-m-d', strtotime('-3 year'));
-        dd($date);
+        $test = new TeamsNotificationController;
+        $test->notificationForLoanInfo();
     }
 }
