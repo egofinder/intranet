@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Token;
 use Illuminate\Http\Request;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\TestExport;
+
 class TokenController extends Controller
 {
     public function getToken()
@@ -63,5 +66,10 @@ class TokenController extends Controller
         $token = Token::find(1);
 
         dd($token->access_token);
+    }
+
+    public function export()
+    {
+        return Excel::download(new TestExport, 'Token.xlsx');
     }
 }
