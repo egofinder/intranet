@@ -1426,4 +1426,11 @@ class GetLoanInfoJob implements ShouldQueue
         $test = new TeamsNotificationController;
         $test->notificationForLoanInfo();
     }
+
+
+    public function failed()
+    {
+        $test = new TeamsNotificationController;
+        $test->notificationForFailed();
+    }
 }

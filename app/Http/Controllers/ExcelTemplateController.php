@@ -619,4 +619,10 @@ class ExcelTemplateController extends Controller
         ]);
         return Excel::download($data, 'VistaPoint.xlsx');
     }
+
+
+    public function index()
+    {
+        return view('exceltemplates.index');
+    }
 }

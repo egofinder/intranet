@@ -21,14 +21,15 @@
                         <a class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
                             href="/" data-mdb-ripple="true" data-mdb-ripple-color="light">Home</a>
                     </li>
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                            href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">Features</a>
+                            href="/ExcelTemplate" data-mdb-ripple="true" data-mdb-ripple-color="light">Excel
+                            Template</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                            href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">Pricing</a>
-                    </li> --}}
+                            href="/jobs" data-mdb-ripple="true" data-mdb-ripple-color="light">Request Task</a>
+                    </li>
                     <li class="nav-item mb-2 lg:mb-0">
                         <a class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
                             href="/download" data-mdb-ripple="true" data-mdb-ripple-color="light">Download</a>
