@@ -76,7 +76,7 @@ class GetLoanInfoJob implements ShouldQueue
         $loan_cursor = $response->header('X-Cursor');
         $max_loop = ($loan_count - ($loan_count % 250)) / 250;
 
-        Storage::delete(['encompass_report.txt', 'encompass_buyside.txt', 'subservicing_data.txt']);
+        // Storage::disk('local')->delete(['encompass_report.txt', 'encompass_buyside.txt', 'subservicing_data.txt']);
 
         // Initialize File.
         $encompass_report =
@@ -1414,6 +1414,14 @@ class GetLoanInfoJob implements ShouldQueue
             Storage::disk('local')->append('encompass_buyside.txt', $encompass_buyside, null);
             Storage::disk('local')->append('subservicing_data.txt', $subservicing_data, null);
         }
+
+        $temp1 = Storage::disk('local')->get('encompass_report.txt');
+        $temp2 = Storage::disk('local')->get('encompass_buyside.txt');
+        $temp3 = Storage::disk('local')->get('subservicing_data.txt');
+
+        Storage::disk('ftp')->put('encompass_report.txt', $temp1);
+        Storage::disk('ftp')->put('encompass_buyside.txt', $temp2);
+        Storage::disk('ftp')->put('subservicing_data.txt', $temp3);
 
         $test = new TeamsNotificationController;
         $test->notificationForLoanInfo();

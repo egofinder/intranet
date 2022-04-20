@@ -3,6 +3,7 @@
 use App\Http\Controllers\DownloadViewController;
 use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +20,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/test', [TokenController::class, 'test']);
+Route::get('/test', [TestController::class, 'test']);
 
 
 Route::get('/getToken', [TokenController::class, 'getToken']);
 
 
-
 Route::get('/introspectToken', [TokenController::class, 'introspectToken']);
-
 
 
 Route::get('/download', [DownloadViewController::class, 'index']);
