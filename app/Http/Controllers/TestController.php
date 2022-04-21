@@ -16,26 +16,27 @@ class TestController extends Controller
     {
 
         // Retrieve Information From DB
-        // dd($request->query(), $request->query('loanNumber'), $request->query('startTID'), $request->query('endTID'), $request->query('AID'), $request->query('TID'));
         if ($request->query('AID') != '0') {
-            // $sql_1 = "SELECT PaymentDate, DATE, Total, Impound, PrincipalInterest, MonthlyPremium FROM payment_letter WHERE PACLOAN = '$loanNumber' AND DEL != 'DEL' AND AID = '$AID' AND TID BETWEEN '$startTID' AND '$endTID'";
-
-            $result1 = PaymentLetter::where('PACLOAN', '=', $request->query('loanNumber'), 'and')
+            $result = PaymentLetter::where('PACLOAN', '=', $request->query('loanNumber'), 'and')
                 ->where('DEL', '!=', 'DEL', 'and')
                 ->where('AID', '=', $request->query('AID'), 'and')
                 ->whereBetween('TID', [$request->query('startTID'), $request->query('endTID')])
                 ->first();
-            dd($result1);
+            // dd($result);
         } else {
+            $result = PaymentLetter::where('DEL', '!=', 'DEL', 'and')
+                ->where('TID', '=', $request->query('TID'))
+                ->first();
 
-            dd('short Query');
-            // $sql_1 = "SELECT PaymentDate, DATE, Total, Impound, PrincipalInterest, MonthlyPremium FROM payment_letter WHERE TID = '$TID' AND DEL != 'DEL'";
-            // $result1 = PaymentLetter::find(13);
-
+            // dd($result);
         }
+
         // $result2 = EncompassReport::find(13);
+        $result = json_decode($result, false);
+        dd($result->UID);
 
-
+        // $paymentDue = $result['UID'];
+        // dd($paymentDue);
 
         // Retrieve Information From Encompass
         // $access_token = Token::find(1)->access_token;

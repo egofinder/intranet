@@ -27,9 +27,8 @@ class ExcelTemplateController extends Controller
                 ]
             ]
         );
-        $decoded = json_decode($response->body(), true);
-        $sample = collect($decoded);
-        $loanGuid = $sample[0]['loanGuid'];
+        $decoded = json_decode($response->body(), false);
+        $loanGuid = $decoded[0]->loanGuid;
         $response = Http::acceptJson()->withToken($access_token)->post(
             'https://api.elliemae.com/encompass/v1/loans/' . $loanGuid . '/fieldReader',
             [
@@ -40,11 +39,11 @@ class ExcelTemplateController extends Controller
             ]
         );
 
-        $decoded = json_decode($response->body(), true);
+        $decoded = json_decode($response->body(), false);
         $result = array("loanNumber" => $loanNumber);
 
         foreach ($decoded as $item) {
-            $result[$item['fieldId']] = $item['value'];
+            $result[$item->fieldId] = $item->value;
         }
 
         return view('exceltemplates.csfunding', compact('result'));
@@ -67,9 +66,8 @@ class ExcelTemplateController extends Controller
                 ]
             ]
         );
-        $decoded = json_decode($response->body(), true);
-        $sample = collect($decoded);
-        $loanGuid = $sample[0]['loanGuid'];
+        $decoded = json_decode($response->body(), false);
+        $loanGuid = $decoded[0]->loanGuid;
         $response = Http::acceptJson()->withToken($access_token)->post(
             'https://api.elliemae.com/encompass/v1/loans/' . $loanGuid . '/fieldReader',
             [
@@ -80,11 +78,11 @@ class ExcelTemplateController extends Controller
             ]
         );
 
-        $decoded = json_decode($response->body(), true);
+        $decoded = json_decode($response->body(), false);
         $result = array("loanNumber" => $loanNumber);
 
         foreach ($decoded as $item) {
-            $result[$item['fieldId']] = $item['value'];
+            $result[$item->fieldId] = $item->value;
         };
 
         $data = new ExcelTemplateExport([
@@ -446,9 +444,8 @@ class ExcelTemplateController extends Controller
                 ]
             ]
         );
-        $decoded = json_decode($response->body(), true);
-        $sample = collect($decoded);
-        $loanGuid = $sample[0]['loanGuid'];
+        $decoded = json_decode($response->body(), false);
+        $loanGuid = $decoded[0]->loanGuid;
         $response = Http::acceptJson()->withToken($access_token)->post(
             'https://api.elliemae.com/encompass/v1/loans/' . $loanGuid . '/fieldReader',
             [
@@ -458,11 +455,11 @@ class ExcelTemplateController extends Controller
             ]
         );
 
-        $decoded = json_decode($response->body(), true);
+        $decoded = json_decode($response->body(), false);
         $result = array("loanNumber" => $loanNumber);
 
         foreach ($decoded as $item) {
-            $result[$item['fieldId']] = $item['value'];
+            $result[$item->fieldId] = $item->value;
         }
 
         return view('exceltemplates.vistapoint', compact('result'));
@@ -485,9 +482,8 @@ class ExcelTemplateController extends Controller
                 ]
             ]
         );
-        $decoded = json_decode($response->body(), true);
-        $sample = collect($decoded);
-        $loanGuid = $sample[0]['loanGuid'];
+        $decoded = json_decode($response->body(), false);
+        $loanGuid = $decoded[0]->loanGuid;
         $response = Http::acceptJson()->withToken($access_token)->post(
             'https://api.elliemae.com/encompass/v1/loans/' . $loanGuid . '/fieldReader',
             [
@@ -497,11 +493,11 @@ class ExcelTemplateController extends Controller
             ]
         );
 
-        $decoded = json_decode($response->body(), true);
+        $decoded = json_decode($response->body(), false);
         $result = array("loanNumber" => $loanNumber);
 
         foreach ($decoded as $item) {
-            $result[$item['fieldId']] = $item['value'];
+            $result[$item->fieldId] = $item->value;
         }
 
         $data = new ExcelTemplateExport([

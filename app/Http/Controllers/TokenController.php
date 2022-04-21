@@ -25,9 +25,9 @@ class TokenController extends Controller
                 ]
             );
         // dd($response->body());
-        $decoded = json_decode($response->body(), true);
-        $access_token = $decoded['access_token'];
-        $token_type = $decoded['token_type'];
+        $decoded = json_decode($response->body(), false);
+        $access_token = $decoded->access_token;
+        $token_type = $decoded->token_type;
 
         $token = Token::find(1);
         $token->access_token = $access_token;
@@ -52,7 +52,7 @@ class TokenController extends Controller
                 ]
             );
         // dd($response->body());
-        $decoded = json_decode($response->body(), true);
+        $decoded = json_decode($response->body(), false);
         // dd($decoded);
         // if ($decoded['error']) {
         //     $getToken = new TokenController;
