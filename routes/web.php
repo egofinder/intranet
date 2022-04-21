@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/test', [TestController::class, 'export']);
+Route::get('/test', [TestController::class, 'index']);
 
 
 Route::get('/getToken', [TokenController::class, 'getToken']);
