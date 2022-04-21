@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\TeamsNotificationController;
 use App\Models\Token;
-use League\Flysystem\MountManager;
+use App\Http\Controllers\TokenController;
 
 class GetTPOInfoJob implements ShouldQueue
 {
@@ -35,7 +35,7 @@ class GetTPOInfoJob implements ShouldQueue
      */
     public function handle()
     {
-
+        TokenController::introspectToken();
         $access_token = Token::find(1)->access_token;
         Storage::disk('local')->delete('TPOinfo.txt');
         $output_TPO =

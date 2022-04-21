@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\TeamsNotificationController;
 use App\Models\Token;
+use App\Http\Controllers\TokenController;
 
 
 class GetLoanInfoJob implements ShouldQueue
@@ -35,6 +36,7 @@ class GetLoanInfoJob implements ShouldQueue
      */
     public function handle()
     {
+        TokenController::introspectToken();
         $access_token = Token::find(1)->access_token;
         $date = date('Y-m-d', strtotime('-3 years'));
 
@@ -71,12 +73,11 @@ class GetLoanInfoJob implements ShouldQueue
             ]
         );
 
-
         $loan_count = $response->header('X-Total-Count');
         $loan_cursor = $response->header('X-Cursor');
         $max_loop = ($loan_count - ($loan_count % 250)) / 250;
 
-        // Storage::disk('local')->delete(['encompass_report.txt', 'encompass_buyside.txt', 'subservicing_data.txt']);
+        Storage::disk('local')->delete(['encompass_report.txt', 'encompass_buyside.txt', 'subservicing_data.txt']);
 
         // Initialize File.
         $encompass_report =

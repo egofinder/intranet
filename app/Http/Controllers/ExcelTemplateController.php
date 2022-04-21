@@ -12,6 +12,7 @@ class ExcelTemplateController extends Controller
 {
     public function csFunding($loanNumber)
     {
+        TokenController::introspectToken();
         $access_token = Token::find(1)->access_token;
         $response = Http::acceptJson()->withToken($access_token)->post(
             'https://api.elliemae.com/encompass/v1/loanPipeline',
@@ -51,6 +52,7 @@ class ExcelTemplateController extends Controller
 
     public function csFundingDownload($loanNumber)
     {
+        TokenController::introspectToken();
         $access_token = Token::find(1)->access_token;
         $response = Http::acceptJson()->withToken($access_token)->post(
             'https://api.elliemae.com/encompass/v1/loanPipeline',
@@ -429,6 +431,7 @@ class ExcelTemplateController extends Controller
 
     public function vistaPoint($loanNumber)
     {
+        TokenController::introspectToken();
         $access_token = Token::find(1)->access_token;
         $response = Http::acceptJson()->withToken($access_token)->post(
             'https://api.elliemae.com/encompass/v1/loanPipeline',
@@ -467,6 +470,7 @@ class ExcelTemplateController extends Controller
 
     public function vistaPointDownload($loanNumber)
     {
+        TokenController::introspectToken();
         $access_token = Token::find(1)->access_token;
         $response = Http::acceptJson()->withToken($access_token)->post(
             'https://api.elliemae.com/encompass/v1/loanPipeline',
