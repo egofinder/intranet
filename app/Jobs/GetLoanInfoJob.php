@@ -54,8 +54,8 @@ class GetLoanInfoJob implements ShouldQueue
                     "terms" => [
                         [
                             "canonicalName" => "Fields.749",
-                            // "value" => $date,
-                            "value" => '2022-04-17',
+                            "value" => $date,
+                            // "value" => '2022-04-17',
                             "matchType" => "greaterThan"
                         ],
                         [
