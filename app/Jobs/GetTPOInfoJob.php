@@ -37,7 +37,7 @@ class GetTPOInfoJob implements ShouldQueue
     {
         TokenController::introspectToken();
         $access_token = Token::find(1)->access_token;
-        Storage::disk('local')->delete('TPOinfo.txt');
+        Storage::disk('local')->delete('outputtpo.txt');
         $output_TPO =
             "orgtype" . "\t" .
             "orgname" . "\t" .
@@ -87,7 +87,7 @@ class GetTPOInfoJob implements ShouldQueue
             "TPO ID" . "\t" .
             "externalid";
 
-        Storage::disk('local')->put('TPOinfo.txt', $output_TPO);
+        Storage::disk('local')->put('outputtpo.txt', $output_TPO);
 
         for ($i = 0; $i <= 3; $i++) {
 
@@ -147,11 +147,11 @@ class GetTPOInfoJob implements ShouldQueue
                     ($item['basicInfo']['tpoId'] ?? "") . "\t" .
                     ($item['basicInfo']['id'] ?? "");
 
-                Storage::disk('local')->append('TPOinfo.txt', $output_TPO);
+                Storage::disk('local')->append('outputtpo.txt', $output_TPO);
             }
         }
-        $temp = Storage::disk('local')->get('TPOinfo.txt');
-        Storage::disk('ftp')->put('TPOinfo.txt', $temp);
+        $temp = Storage::disk('local')->get('outputtpo.txt');
+        Storage::disk('ftp')->put('outputtpo.txt', $temp);
         $test = new TeamsNotificationController;
         $test->notificationForTPO();
     }

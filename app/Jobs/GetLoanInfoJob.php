@@ -24,6 +24,10 @@ class GetLoanInfoJob implements ShouldQueue
      *
      * @return void
      */
+
+
+    public $timeout = 600;
+
     public function __construct()
     {
         //
@@ -77,7 +81,7 @@ class GetLoanInfoJob implements ShouldQueue
         $loan_cursor = $response->header('X-Cursor');
         $max_loop = ($loan_count - ($loan_count % 250)) / 250;
 
-        Storage::disk('local')->delete(['encompass_report.txt', 'encompass_buyside.txt', 'subservicing_data.txt']);
+        Storage::disk('local')->delete(['output.txt', 'output2.txt', 'output3.txt']);
 
         // Initialize File.
         $encompass_report =
@@ -537,9 +541,9 @@ class GetLoanInfoJob implements ShouldQueue
 
 
 
-        Storage::disk('local')->put('encompass_report.txt', $encompass_report);
-        Storage::disk('local')->put('encompass_buyside.txt', $encompass_buyside);
-        Storage::disk('local')->put('subservicing_data.txt', $subservicing_data);
+        Storage::disk('local')->put('output.txt', $encompass_report);
+        Storage::disk('local')->put('output2.txt', $encompass_buyside);
+        Storage::disk('local')->put('output3.txt', $subservicing_data);
 
 
         for ($i = 0; $i <= $max_loop; $i++) {
@@ -1411,18 +1415,18 @@ class GetLoanInfoJob implements ShouldQueue
                     (isset($item['fields']['Fields.1483']) ? (str_replace(',', '', $item['fields']['Fields.1483'])) : "") . "\t" .
                     (isset($item['fields']['Fields.2211']) ? (str_replace(',', '', $item['fields']['Fields.2211'])) : "") . "\n";
             }
-            Storage::disk('local')->append('encompass_report.txt', $encompass_report, null);
-            Storage::disk('local')->append('encompass_buyside.txt', $encompass_buyside, null);
-            Storage::disk('local')->append('subservicing_data.txt', $subservicing_data, null);
+            Storage::disk('local')->append('output.txt', $encompass_report, null);
+            Storage::disk('local')->append('output2.txt', $encompass_buyside, null);
+            Storage::disk('local')->append('output3.txt', $subservicing_data, null);
         }
 
-        $temp1 = Storage::disk('local')->get('encompass_report.txt');
-        $temp2 = Storage::disk('local')->get('encompass_buyside.txt');
-        $temp3 = Storage::disk('local')->get('subservicing_data.txt');
+        $temp1 = Storage::disk('local')->get('output.txt');
+        $temp2 = Storage::disk('local')->get('output2.txt');
+        $temp3 = Storage::disk('local')->get('output3.txt');
 
-        Storage::disk('ftp')->put('encompass_report.txt', $temp1);
-        Storage::disk('ftp')->put('encompass_buyside.txt', $temp2);
-        Storage::disk('ftp')->put('subservicing_data.txt', $temp3);
+        Storage::disk('ftp')->put('output.txt', $temp1);
+        Storage::disk('ftp')->put('output2.txt', $temp2);
+        Storage::disk('ftp')->put('output3.txt', $temp3);
 
         $test = new TeamsNotificationController;
         $test->notificationForLoanInfo();

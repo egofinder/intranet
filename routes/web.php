@@ -5,7 +5,7 @@ use App\Http\Controllers\ExcelTemplateController;
 use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentLetterController;
-use App\Http\Controllers\JobViewController;
+use App\Http\Controllers\JobController;
 use Illuminate\Contracts\Queue\Job;
 
 /*
@@ -33,7 +33,14 @@ Route::get('/download', [DownloadViewController::class, 'index']);
 
 
 
-Route::get('/jobs', [JobViewController::class, 'index']);
+Route::get('/jobs', [JobController::class, 'index']);
+
+Route::get('/jobs/delextraloan/{id}', [JobController::class, 'destroy']);
+
+Route::post('/jobs/addextraloan', [JobController::class, 'store']);
+
+
+
 
 Route::get('/getTPOInfo', function () {
     dispatch((new App\Jobs\GetTPOInfoJob));
