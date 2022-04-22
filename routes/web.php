@@ -4,7 +4,7 @@ use App\Http\Controllers\DownloadViewController;
 use App\Http\Controllers\ExcelTemplateController;
 use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\PaymentLetterController;
 use App\Http\Controllers\JobViewController;
 use Illuminate\Contracts\Queue\Job;
 
@@ -23,13 +23,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/test', [TestController::class, 'index']);
 
 
 Route::get('/getToken', [TokenController::class, 'getToken']);
 
 Route::get('/introspectToken', [TokenController::class, 'introspectToken']);
-
 
 Route::get('/download', [DownloadViewController::class, 'index']);
 
@@ -49,6 +47,7 @@ Route::get('/getLoanInfo', function () {
 
 
 
+Route::get('/paymentletter', [PaymentLetterController::class, 'index']);
 
 
 Route::get('/ExcelTemplate', [ExcelTemplateController::class, 'index']);

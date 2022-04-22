@@ -9,7 +9,6 @@ class PaymentLetter extends Model
 {
     use HasFactory;
     protected $connection = 'mysql2';
-    protected $primaryKey = 'UID';
     protected $table = 'payment_letter';
     public $timestamps = false;
 }

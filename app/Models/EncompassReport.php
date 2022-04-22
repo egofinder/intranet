@@ -9,7 +9,6 @@ class EncompassReport extends Model
 {
     use HasFactory;
     protected $connection = 'mysql2';
-    protected $primaryKey = 'UID';
     protected $table = 'encompass_report';
     public $timestamps = false;
 }
