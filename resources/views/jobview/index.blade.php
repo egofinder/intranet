@@ -12,7 +12,7 @@
             </div>
             <div class="px-6 pt-4 pb-2 text-center">
                 <a class="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-blue-300"
-                    data-mdb-ripple="true" data-mdb-ripple-color="light" href="/getTPOInfo" role="button">Request</a>
+                    data-mdb-ripple="true" data-mdb-ripple-color="light" href="/get-tpo-info" role="button">Request</a>
             </div>
         </div>
 
@@ -32,13 +32,13 @@
                         <p class="border-2">
                             {{ $loan->loanNumber }}
                         </p>
-                        <a class="border-2" href={{ url('/jobs/delextraloan') . '/' . $loan->id }}>Delete</a>
+                        <a class="border-2" href={{ url('/job/delete-extra-loan') . '/' . $loan->id }}>Delete</a>
                     </div>
                 @endforeach
             </div>
             <div class="px-6 pt-4 pb-2 text-center">
                 <a class="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-blue-300"
-                    data-mdb-ripple="true" data-mdb-ripple-color="light" href="/getLoanInfo" role="button">Request</a>
+                    data-mdb-ripple="true" data-mdb-ripple-color="light" href="/get-loan-info" role="button">Request</a>
             </div>
         </div>
 
@@ -48,7 +48,7 @@
                 <div class="mb-2 text-xl font-bold">Add Extra loan to LoanInfo</div>
             </div>
             <div class="px-6 pt-4 pb-2 text-center">
-                <form method="post" action="/jobs/addextraloan" id="extra_loan">
+                <form method="post" action="/job/add-extra-loan" id="extra_loan">
                     @csrf
                     <label for="loanNumber" class="mx-4">Loan Number</label>
                     <input type="text" name="loanNumber" id="loanNumber" class="border-2">

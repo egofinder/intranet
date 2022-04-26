@@ -25,44 +25,44 @@ Route::get('/', function () {
 
 
 
-Route::get('/getToken', [TokenController::class, 'getToken']);
+Route::get('/get-token', [TokenController::class, 'getToken']);
 
-Route::get('/introspectToken', [TokenController::class, 'introspectToken']);
+Route::get('/introspect-token', [TokenController::class, 'introspectToken']);
 
 Route::get('/download', [DownloadViewController::class, 'index']);
 
 
 
-Route::get('/jobs', [JobController::class, 'index']);
+Route::get('/job', [JobController::class, 'index']);
 
-Route::get('/jobs/delextraloan/{id}', [JobController::class, 'destroy']);
+Route::get('/job/delete-extra-loan/{id}', [JobController::class, 'destroy']);
 
-Route::post('/jobs/addextraloan', [JobController::class, 'store']);
+Route::post('/job/add-extra-loan', [JobController::class, 'store']);
 
-Route::get('/jobs/test', [JobController::class, 'test']);
-
-
+Route::get('/job/test', [JobController::class, 'test']);
 
 
-Route::get('/getTPOInfo', function () {
+
+
+Route::get('/get-tpo-info', function () {
     dispatch((new App\Jobs\GetTPOInfoJob));
     return redirect('/')->with('success', 'Request TPO Info success');
 });
 
-Route::get('/getLoanInfo', function () {
+Route::get('/get-loan-info', function () {
     dispatch((new App\Jobs\GetLoanInfoJob));
     return redirect('/')->with('success', 'Request Loan Info success');
 });
 
 
 
-Route::get('/paymentletter', [PaymentLetterController::class, 'index']);
+Route::get('/payment-letter', [PaymentLetterController::class, 'index']);
 
 
-Route::get('/ExcelTemplate', [ExcelTemplateController::class, 'index']);
+Route::get('/excel-template', [ExcelTemplateController::class, 'index']);
 
-Route::get('/CSFunding/{loanNumber}', [ExcelTemplateController::class, 'csFunding']);
-Route::get('/CSFunding/{loanNumber}/download', [ExcelTemplateController::class, 'csFundingDownload']);
+Route::get('/excel-template/cs-funding/{loanNumber}', [ExcelTemplateController::class, 'csFunding']);
+Route::get('/excel-template/cs-funding/{loanNumber}/download', [ExcelTemplateController::class, 'csFundingDownload']);
 
-Route::get('/VistaPoint/{loanNumber}', [ExcelTemplateController::class, 'vistaPoint']);
-Route::get('/VistaPoint/{loanNumber}/download', [ExcelTemplateController::class, 'vistaPointDownload']);
+Route::get('/excel-template/vista-point/{loanNumber}', [ExcelTemplateController::class, 'vistaPoint']);
+Route::get('/excel-template/vista-point/{loanNumber}/download', [ExcelTemplateController::class, 'vistaPointDownload']);
