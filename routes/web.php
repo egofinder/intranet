@@ -39,6 +39,8 @@ Route::get('/jobs/delextraloan/{id}', [JobController::class, 'destroy']);
 
 Route::post('/jobs/addextraloan', [JobController::class, 'store']);
 
+Route::get('/jobs/test', [JobController::class, 'test']);
+
 
 
 
