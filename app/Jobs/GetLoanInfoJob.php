@@ -962,8 +962,8 @@ class GetLoanInfoJob implements ShouldQueue
 
             foreach ($sample as $item) {
                 $encompass_report .=
-                    (isset($item['fields']['Fields.745']) ? date('m/d/Y', strtotime($item['fields']['Fields.745'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.2370']) ? date('m/d/Y', strtotime($item['fields']['Fields.2370'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.745']) ? date('m/d/Y', strtotime($item['fields']['Fields.745'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.2370']) ? date('m/d/Y', strtotime($item['fields']['Fields.2370'])) : "") . "\t" .
                     ($item['fields']['Fields.364'] ?? "") . "\t" .
                     ($item['fields']['Fields.4000'] ?? "") . "\t" .
                     ($item['fields']['Fields.4002'] ?? "") . "\t" .
@@ -983,16 +983,16 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.2274']  ?? "") . "\t" .
                     ($item['fields']['Fields.2276']  ?? "") . "\t" .
                     ($item['fields']['Fields.2277']  ?? "") . "\t" .
-                    (isset($item['fields']['Fields.2297']) ? date('m/d/Y', strtotime($item['fields']['Fields.2297'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.2206']) ? date('m/d/Y', strtotime($item['fields']['Fields.2206'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.2297']) ? date('m/d/Y', strtotime($item['fields']['Fields.2297'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.2206']) ? date('m/d/Y', strtotime($item['fields']['Fields.2206'])) : "") . "\t" .
                     ($item['fields']['Fields.2295']  ?? "") . "\t" .
                     ($item['fields']['Fields.2296']  ?? "") . "\t" .
                     ($item['fields']['Fields.2028']  ?? "") . "\t" .
                     ($item['fields']['Fields.2']  ?? "") . "\t" .
                     ($item['fields']['Fields.1990']  ?? "") . "\t" .
                     ($item['fields']['Fields.1393']  ?? "") . "\t" .
-                    (isset($item['fields']['Fields.1997']) ? date('m/d/Y', strtotime($item['fields']['Fields.1997'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.2014']) ? date('m/d/Y', strtotime($item['fields']['Fields.2014'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.1997']) ? date('m/d/Y', strtotime($item['fields']['Fields.1997'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.2014']) ? date('m/d/Y', strtotime($item['fields']['Fields.2014'])) : "") . "\t" .
                     ($item['fields']['Fields.1811']  ?? "") . "\t" .
                     ($item['fields']['Fields.FR0104'] ?? "") . "\t" .
                     ($item['fields']['Fields.FR0106'] ?? "") . "\t" .
@@ -1022,22 +1022,22 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.HUD24'] ?? "") . "\t" .
                     ($item['fields']['Fields.66']  ?? "") . "\t" .
                     ($item['fields']['Fields.984']  ?? "") . "\t" .
-                    (isset($item['fields']['Fields.682']) ? date('m/d/Y', strtotime($item['fields']['Fields.682'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.682']) ? date('m/d/Y', strtotime($item['fields']['Fields.682'])) : "") . "\t" .
                     ($item['fields']['Fields.2019']  ?? "") . "\t" .
                     ($item['fields']['CurrentLoanAssociate.FullName'] ?? "") . "\t" .
-                    (isset($item['fields']['Fields.Log.MS.Date.Set Up']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Set Up'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.Log.MS.Date.Set Up']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Set Up'])) : "") . "\t" .
                     ($item['fields']['Fields.420']  ?? "") . "\t" .
-                    (isset($item['fields']['Fields.Log.MS.Date.Doc Preparation']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Doc Preparation'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.Log.MS.Date.Doc Preparation']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Doc Preparation'])) : "") . "\t" .
                     ($item['fields']['Fields.LoanTeamMember.Name.Doc Drawer'] ?? "") . "\t" .
-                    (isset($item['fields']['Fields.1994']) ? date('m/d/Y', strtotime($item['fields']['Fields.1994'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.Log.MS.Date.Clear for Docs']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Clear for Docs'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.1994']) ? date('m/d/Y', strtotime($item['fields']['Fields.1994'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.Log.MS.Date.Clear for Docs']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Clear for Docs'])) : "") . "\t" .
                     ($item['fields']['Fields.16']  ?? "") . "\t" .
                     ($item['fields']['Fields.1040']  ?? "") . "\t" .
                     ($item['fields']['Fields.136']  ?? "") . "\t" .
                     ($item['fields']['Fields.13']  ?? "") . "\t" .
                     ($item['fields']['Fields.19']  ?? "") . "\t" .
                     ($item['fields']['Fields.MS.STATUSDATE'] ?? "") . "\t" .
-                    (isset($item['fields']['Fields.MS.STATUSDATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.MS.STATUSDATE'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.MS.STATUSDATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.MS.STATUSDATE'])) : "") . "\t" .
                     ($item['fields']['Fields.356']  ?? "") . "\t" .
                     ($item['fields']['Fields.1416']  ?? "") . "\t" .
                     ($item['fields']['Fields.1417']  ?? "") . "\t" .
@@ -1045,7 +1045,7 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.1419']  ?? "") . "\t" .
                     ($item['fields']['Fields.1819']  ?? "") . "\t" .
                     ($item['fields']['Fields.1041']  ?? "") . "\t" .
-                    (isset($item['fields']['Fields.Log.MS.Date.Docs Returned']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Docs Returned'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.Log.MS.Date.Docs Returned']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Docs Returned'])) : "") . "\t" .
                     ($item['fields']['Fields.TPO.X30'] ?? "") . "\t" .
                     ($item['fields']['Fields.1396']  ?? "") . "\t" .
                     ($item['fields']['Fields.TPO.X14'] ?? "") . "\t" .
@@ -1056,24 +1056,24 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.1401']  ?? "") . "\t" .
                     ($item['fields']['Fields.3261']  ?? "") . "\t" .
                     ($item['fields']['Fields.65']  ?? "") . "\t" .
-                    (isset($item['fields']['Fields.762']) ? date('m/d/Y', strtotime($item['fields']['Fields.762'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.762']) ? date('m/d/Y', strtotime($item['fields']['Fields.762'])) : "") . "\t" .
                     ($item['fields']['Fields.TPO.X63'] ?? "") . "\t" .
                     ($item['fields']['Fields.3332']  ?? "") . "\t" .
                     ($item['fields']['Fields.3']  ?? "") . "\t" .
                     ($item['fields']['Fields.4']  ?? "") . "\t" .
                     ($item['fields']['Fields.1993']  ?? "") . "\t" .
-                    (isset($item['fields']['Fields.Log.MS.Date.Decision']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Decision'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.Log.MS.Date.Final Approval']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Final Approval'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.Log.MS.Date.Decision']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Decision'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.Log.MS.Date.Final Approval']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Final Approval'])) : "") . "\t" .
                     ($item['fields']['Fields.ORGID'] ?? "") . "\t" .
                     ($item['fields']['Fields.CUST16FV'] ?? "") . "\t" .
-                    (isset($item['fields']['Fields.3143']) ? date('m/d/Y', strtotime($item['fields']['Fields.3143'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.3152']) ? date('m/d/Y', strtotime($item['fields']['Fields.3152'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.3143']) ? date('m/d/Y', strtotime($item['fields']['Fields.3143'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.3152']) ? date('m/d/Y', strtotime($item['fields']['Fields.3152'])) : "") . "\t" .
                     ($item['fields']['Fields.LoanTeamMember.Email.File Starter'] ?? "") . "\t" .
                     ($item['fields']['Fields.LoanTeamMember.Email.Loan Officer'] ?? "") . "\t" .
                     ($item['fields']['Fields.LoanTeamMember.Name.File Starter'] ?? "") . "\t" .
                     ($item['fields']['Fields.LoanTeamMember.Name.Loan Officer'] ?? "") . "\t" .
-                    (isset($item['fields']['Fields.Log.MS.Date.Processing']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Processing'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.Log.MS.Date.Pre-approval']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Pre-approval'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.Log.MS.Date.Processing']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Processing'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.Log.MS.Date.Pre-approval']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Pre-approval'])) : "") . "\t" .
                     ($item['fields']['Fields.MORNET.X67'] ?? "") . "\t" .
                     ($item['fields']['Fields.CX.SHIPSETUPDAYS'] ?? "") . "\t" .
                     ($item['fields']['Fields.CX.SHIPPREAPPROVEDAYS'] ?? "") . "\t" .
@@ -1087,7 +1087,7 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.CX.SHIPSHIPDAYS'] ?? "") . "\t" .
                     ($item['fields']['Fields.CX.SHIPSUSPENSECLEARDAYS'] ?? "") . "\t" .
                     ($item['fields']['Fields.CX.SHIPPURCHASEDAYS'] ?? "") . "\t" .
-                    (isset($item['fields']['Fields.Log.MS.Date.PTD Processing']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.PTD Processing'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.Log.MS.Date.PTD Processing']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.PTD Processing'])) : "") . "\t" .
                     ($item['fields']['Fields.2247'] ?? "") . "\t" .
                     ($item['fields']['Fields.2248'] ?? "") . "\t" .
                     ($item['fields']['Fields.2249'] ?? "") . "\t" .
@@ -1096,33 +1096,33 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.2252'] ?? "") . "\t" .
                     ($item['fields']['Fields.LoanTeamMember.Name.Account Manager'] ?? "") . "\t" .
                     ($item['fields']['Fields.LoanTeamMember.Name.Jr. Underwriter'] ?? "") . "\t" .
-                    (isset($item['fields']['Fields.ISPAY.Escrow.0.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.0.DATE'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.ISPAY.Escrow.0.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.0.DATE'])) : "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.0.ESCROWTYPE'] ?? "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.0.INTNAME'] ?? "") . "\t" .
                     (isset($item['fields']['Fields.ISPAY.Escrow.0.AMT']) ? (str_replace(',', '', $item['fields']['Fields.ISPAY.Escrow.0.AMT'])) : "") . "\t" .
                     (isset($item['fields']['Fields.NEWHUD.X1719']) ? (str_replace(',', '', $item['fields']['Fields.NEWHUD.X1719'])) : "") . "\t" .
                     ($item['fields']['Fields.TPO.X54']  ?? "") . "\t" .
-                    (isset($item['fields']['Fields.749']) ? date('m/d/Y', strtotime($item['fields']['Fields.749'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.Log.MS.Date.Funding']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Funding'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.749']) ? date('m/d/Y', strtotime($item['fields']['Fields.749'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.Log.MS.Date.Funding']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Funding'])) : "") . "\t" .
                     ($item['fields']['Fields.799']  ?? "") . "\t" .
                     ($item['fields']['Fields.3238']  ?? "") . "\t" .
-                    (isset($item['fields']['Fields.3197']) ? date('m/d/Y', strtotime($item['fields']['Fields.3197'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.ISPAY.Escrow.1.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.1.DATE'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.3197']) ? date('m/d/Y', strtotime($item['fields']['Fields.3197'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.ISPAY.Escrow.1.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.1.DATE'])) : "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.1.ESCROWTYPE']  ?? "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.1.INTNAME']  ?? "") . "\t" .
                     (isset($item['fields']['Fields.ISPAY.Escrow.1.AMT']) ? (str_replace(',', '', $item['fields']['Fields.ISPAY.Escrow.1.AMT'])) : "") . "\t" .
                     ($item['fields']['Fields.1991']  ?? "") . "\t" .
                     ($item['fields']['Fields.EDISCLOSEDTRK.FulfilledBy.1']  ?? "") . "\t" .
                     ($item['fields']['Fields.EDISCLOSEDTRK.SentDate.1']  ?? "") . "\t" .
-                    (isset($item['fields']['Fields.ISPAY.Escrow.2.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.2.DATE'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.ISPAY.Escrow.2.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.2.DATE'])) : "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.2.ESCROWTYPE']  ?? "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.2.INTNAME']  ?? "") . "\t" .
                     (isset($item['fields']['Fields.ISPAY.Escrow.2.AMT']) ? (str_replace(',', '', $item['fields']['Fields.ISPAY.Escrow.2.AMT'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.ISPAY.Escrow.3.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.3.DATE'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.ISPAY.Escrow.3.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.3.DATE'])) : "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.3.ESCROWTYPE']  ?? "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.3.INTNAME']  ?? "") . "\t" .
                     (isset($item['fields']['Fields.ISPAY.Escrow.3.AMT']) ? (str_replace(',', '', $item['fields']['Fields.ISPAY.Escrow.3.AMT'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.ISPAY.Escrow.4.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.4.DATE'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.ISPAY.Escrow.4.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.4.DATE'])) : "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.4.ESCROWTYPE']  ?? "") . "\t" .
                     ($item['fields']['Fields.ISPAY.Escrow.4.INTNAME']  ?? "") . "\t" .
                     (isset($item['fields']['Fields.ISPAY.Escrow.4.AMT']) ? (str_replace(',', '', $item['fields']['Fields.ISPAY.Escrow.4.AMT'])) : "") . "\t" .
@@ -1151,9 +1151,9 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.740']   ?? "") . "\t" .
                     ($item['fields']['Fields.742']   ?? "") . "\t" .
                     ($item['fields']['Fields.1401']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.761']) ? date('m/d/Y', strtotime($item['fields']['Fields.761'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.761']) ? date('m/d/Y', strtotime($item['fields']['Fields.761'])) : "") . "\t" .
                     ($item['fields']['Fields.432']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.762']) ? date('m/d/Y', strtotime($item['fields']['Fields.762'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.762']) ? date('m/d/Y', strtotime($item['fields']['Fields.762'])) : "") . "\t" .
                     ($item['fields']['Fields.VASUMM.X23']   ?? "") . "\t" .
                     ($item['fields']['Fields.2293']   ?? "") . "\t" .
                     ($item['fields']['Fields.2294']   ?? "") . "\t" .
@@ -1291,10 +1291,10 @@ class GetLoanInfoJob implements ShouldQueue
                     (isset($item['fields']['Fields.CD1.X14']) ? (str_replace(',', '', $item['fields']['Fields.CD1.X14'])) : "") . "\t" .
                     (isset($item['fields']['Fields.2']) ? (str_replace(',', '', $item['fields']['Fields.2'])) : "") . "\t" .
                     (isset($item['fields']['Fields.1109']) ? (str_replace(',', '', $item['fields']['Fields.1109'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.1996']) ? date('m/d/Y', strtotime($item['fields']['Fields.1996'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.682']) ? date('m/d/Y', strtotime($item['fields']['Fields.682'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.3514']) ? date('m/d/Y', strtotime($item['fields']['Fields.3514'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.78']) ? date('m/d/Y', strtotime($item['fields']['Fields.78'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.1996']) ? date('m/d/Y', strtotime($item['fields']['Fields.1996'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.682']) ? date('m/d/Y', strtotime($item['fields']['Fields.682'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.3514']) ? date('m/d/Y', strtotime($item['fields']['Fields.3514'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.78']) ? date('m/d/Y', strtotime($item['fields']['Fields.78'])) : "") . "\t" .
                     ($item['fields']['Fields.4000']   ?? "") . "\t" .
                     ($item['fields']['Fields.4002']   ?? "") . "\t" .
                     ($item['fields']['Fields.4001']   ?? "") . "\t" .
@@ -1315,9 +1315,9 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.1177']   ?? "") . "\t" .
                     (isset($item['fields']['Fields.356']) ? (str_replace(',', '', $item['fields']['Fields.356'])) : "") . "\t" .
                     ($item['fields']['Fields.2353']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.L770']) ? date('m/d/Y', strtotime($item['fields']['Fields.L770'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.L770']) ? date('m/d/Y', strtotime($item['fields']['Fields.L770'])) : "") . "\t" .
                     ($item['fields']['Fields.1051']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.2023']) ? date('m/d/Y', strtotime($item['fields']['Fields.2023'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.2023']) ? date('m/d/Y', strtotime($item['fields']['Fields.2023'])) : "") . "\t" .
                     (isset($item['fields']['Fields.334']) ? (str_replace(',', '', $item['fields']['Fields.334'])) : "") . "\t" .
                     (isset($item['fields']['Fields.1191']) ? (str_replace(',', '', $item['fields']['Fields.1191'])) : "") . "\t" .
                     (isset($item['fields']['Fields.CD2.XSTG']) ? (str_replace(',', '', $item['fields']['Fields.CD2.XSTG'])) : "") . "\t" .
@@ -1336,16 +1336,16 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.353']   ?? "") . "\t" .
                     ($item['fields']['Fields.742']   ?? "") . "\t" .
                     ($item['fields']['Fields.2977']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.2365']) ? date('m/d/Y', strtotime($item['fields']['Fields.2365'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.2365']) ? date('m/d/Y', strtotime($item['fields']['Fields.2365'])) : "") . "\t" .
                     ($item['fields']['Fields.2364']   ?? "") . "\t" .
                     ($item['fields']['Fields.541']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.NOTICES.X96']) ? date('m/d/Y', strtotime($item['fields']['Fields.NOTICES.X96'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.NOTICES.X96']) ? date('m/d/Y', strtotime($item['fields']['Fields.NOTICES.X96'])) : "") . "\t" .
                     ($item['fields']['Fields.2363']   ?? "") . "\t" .
                     ($item['fields']['Fields.Document.Company.Flood Certificate']   ?? "") . "\t" .
                     ($item['fields']['Fields.Document.Company.Mortgate Insurance']   ?? "") . "\t" .
                     ($item['fields']['Fields.1612']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.1402']) ? date('m/d/Y', strtotime($item['fields']['Fields.1402'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.1403']) ? date('m/d/Y', strtotime($item['fields']['Fields.1403'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.1402']) ? date('m/d/Y', strtotime($item['fields']['Fields.1402'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.1403']) ? date('m/d/Y', strtotime($item['fields']['Fields.1403'])) : "") . "\t" .
                     ($item['fields']['Fields.13']   ?? "") . "\t" .
                     ($item['fields']['Fields.2364']   ?? "") . "\t" .
                     ($item['fields']['Fields.430']   ?? "") . "\t" .
@@ -1368,9 +1368,9 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.66#4']   ?? "") . "\t" .
                     ($item['fields']['Fields.2973']   ?? "") . "\t" .
                     ($item['fields']['Fields.109']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.3548']) ? date('m/d/Y', strtotime($item['fields']['Fields.3548'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.3548']) ? date('m/d/Y', strtotime($item['fields']['Fields.3548'])) : "") . "\t" .
                     ($item['fields']['Fields.3336']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.78']) ? (date('m/d/Y', strtotime(strtok($item['fields']['Fields.78'], " ") . '+1 day'))) : "") . "\t" .
+                    (!empty($item['fields']['Fields.78']) ? (date('m/d/Y', strtotime(strtok($item['fields']['Fields.78'], " ") . '+1 day'))) : "") . "\t" .
                     ($item['fields']['Fields.VEND.X167']   ?? "") . "\t" .
                     ($item['fields']['Fields.NEWHUD.X337']   ?? "") . "\t" .
                     ($item['fields']['Fields.NEWHUD.X338']   ?? "") . "\t" .
@@ -1390,18 +1390,18 @@ class GetLoanInfoJob implements ShouldQueue
                     ($item['fields']['Fields.3658']   ?? "") . "\t" .
                     ($item['fields']['Fields.1059']   ?? "") . "\t" .
                     ($item['fields']['Fields.NOTICES.X50']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.3514']) ? date('m/d/Y', strtotime($item['fields']['Fields.3514'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.3514']) ? date('m/d/Y', strtotime($item['fields']['Fields.3514'])) : "") . "\t" .
                     ($item['fields']['Fields.LoanTeamMember.Name.File Starter']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.CX.HUD0141']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0141'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.CX.HUD0142']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0142'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.CX.HUD0241']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0241'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.CX.HUD0242']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0242'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.2370']) ? date('m/d/Y', strtotime($item['fields']['Fields.2370'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.1997']) ? date('m/d/Y', strtotime($item['fields']['Fields.1997'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.CX.HUD0144']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0144'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.CX.HUD0244']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0244'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.CX.HUD0141']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0141'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.CX.HUD0142']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0142'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.CX.HUD0241']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0241'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.CX.HUD0242']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0242'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.2370']) ? date('m/d/Y', strtotime($item['fields']['Fields.2370'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.1997']) ? date('m/d/Y', strtotime($item['fields']['Fields.1997'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.CX.HUD0144']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0144'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.CX.HUD0244']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0244'])) : "") . "\t" .
                     ($item['fields']['Fields.1894']   ?? "") . "\t" .
-                    (isset($item['fields']['Fields.2397']) ? date('m/d/Y', strtotime($item['fields']['Fields.2397'])) : "") . "\t" .
+                    (!empty($item['fields']['Fields.2397']) ? date('m/d/Y', strtotime($item['fields']['Fields.2397'])) : "") . "\t" .
                     ($item['fields']['Fields.VEND.X150']   ?? "") . "\t" .
                     ($item['fields']['Fields.VEND.X151']   ?? "") . "\t" .
                     ($item['fields']['Fields.VEND.X152']   ?? "") . "\t" .
@@ -1416,6 +1416,7 @@ class GetLoanInfoJob implements ShouldQueue
                     (isset($item['fields']['Fields.1483']) ? (str_replace(',', '', $item['fields']['Fields.1483'])) : "") . "\t" .
                     (isset($item['fields']['Fields.2211']) ? (str_replace(',', '', $item['fields']['Fields.2211'])) : "") . "\n";
             }
+
             Storage::disk('local')->append('output.txt', $encompass_report, null);
             Storage::disk('local')->append('output2.txt', $encompass_buyside, null);
             Storage::disk('local')->append('output3.txt', $subservicing_data, null);
@@ -1843,8 +1844,8 @@ class GetLoanInfoJob implements ShouldQueue
 
         foreach ($sample as $item) {
             $encompass_report .=
-                (isset($item['fields']['Fields.745']) ? date('m/d/Y', strtotime($item['fields']['Fields.745'])) : "") . "\t" .
-                (isset($item['fields']['Fields.2370']) ? date('m/d/Y', strtotime($item['fields']['Fields.2370'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.745']) ? date('m/d/Y', strtotime($item['fields']['Fields.745'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.2370']) ? date('m/d/Y', strtotime($item['fields']['Fields.2370'])) : "") . "\t" .
                 ($item['fields']['Fields.364'] ?? "") . "\t" .
                 ($item['fields']['Fields.4000'] ?? "") . "\t" .
                 ($item['fields']['Fields.4002'] ?? "") . "\t" .
@@ -1864,16 +1865,16 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.2274']  ?? "") . "\t" .
                 ($item['fields']['Fields.2276']  ?? "") . "\t" .
                 ($item['fields']['Fields.2277']  ?? "") . "\t" .
-                (isset($item['fields']['Fields.2297']) ? date('m/d/Y', strtotime($item['fields']['Fields.2297'])) : "") . "\t" .
-                (isset($item['fields']['Fields.2206']) ? date('m/d/Y', strtotime($item['fields']['Fields.2206'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.2297']) ? date('m/d/Y', strtotime($item['fields']['Fields.2297'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.2206']) ? date('m/d/Y', strtotime($item['fields']['Fields.2206'])) : "") . "\t" .
                 ($item['fields']['Fields.2295']  ?? "") . "\t" .
                 ($item['fields']['Fields.2296']  ?? "") . "\t" .
                 ($item['fields']['Fields.2028']  ?? "") . "\t" .
                 ($item['fields']['Fields.2']  ?? "") . "\t" .
                 ($item['fields']['Fields.1990']  ?? "") . "\t" .
                 ($item['fields']['Fields.1393']  ?? "") . "\t" .
-                (isset($item['fields']['Fields.1997']) ? date('m/d/Y', strtotime($item['fields']['Fields.1997'])) : "") . "\t" .
-                (isset($item['fields']['Fields.2014']) ? date('m/d/Y', strtotime($item['fields']['Fields.2014'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.1997']) ? date('m/d/Y', strtotime($item['fields']['Fields.1997'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.2014']) ? date('m/d/Y', strtotime($item['fields']['Fields.2014'])) : "") . "\t" .
                 ($item['fields']['Fields.1811']  ?? "") . "\t" .
                 ($item['fields']['Fields.FR0104'] ?? "") . "\t" .
                 ($item['fields']['Fields.FR0106'] ?? "") . "\t" .
@@ -1903,22 +1904,22 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.HUD24'] ?? "") . "\t" .
                 ($item['fields']['Fields.66']  ?? "") . "\t" .
                 ($item['fields']['Fields.984']  ?? "") . "\t" .
-                (isset($item['fields']['Fields.682']) ? date('m/d/Y', strtotime($item['fields']['Fields.682'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.682']) ? date('m/d/Y', strtotime($item['fields']['Fields.682'])) : "") . "\t" .
                 ($item['fields']['Fields.2019']  ?? "") . "\t" .
                 ($item['fields']['CurrentLoanAssociate.FullName'] ?? "") . "\t" .
-                (isset($item['fields']['Fields.Log.MS.Date.Set Up']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Set Up'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.Log.MS.Date.Set Up']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Set Up'])) : "") . "\t" .
                 ($item['fields']['Fields.420']  ?? "") . "\t" .
-                (isset($item['fields']['Fields.Log.MS.Date.Doc Preparation']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Doc Preparation'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.Log.MS.Date.Doc Preparation']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Doc Preparation'])) : "") . "\t" .
                 ($item['fields']['Fields.LoanTeamMember.Name.Doc Drawer'] ?? "") . "\t" .
-                (isset($item['fields']['Fields.1994']) ? date('m/d/Y', strtotime($item['fields']['Fields.1994'])) : "") . "\t" .
-                (isset($item['fields']['Fields.Log.MS.Date.Clear for Docs']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Clear for Docs'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.1994']) ? date('m/d/Y', strtotime($item['fields']['Fields.1994'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.Log.MS.Date.Clear for Docs']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Clear for Docs'])) : "") . "\t" .
                 ($item['fields']['Fields.16']  ?? "") . "\t" .
                 ($item['fields']['Fields.1040']  ?? "") . "\t" .
                 ($item['fields']['Fields.136']  ?? "") . "\t" .
                 ($item['fields']['Fields.13']  ?? "") . "\t" .
                 ($item['fields']['Fields.19']  ?? "") . "\t" .
                 ($item['fields']['Fields.MS.STATUSDATE'] ?? "") . "\t" .
-                (isset($item['fields']['Fields.MS.STATUSDATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.MS.STATUSDATE'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.MS.STATUSDATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.MS.STATUSDATE'])) : "") . "\t" .
                 ($item['fields']['Fields.356']  ?? "") . "\t" .
                 ($item['fields']['Fields.1416']  ?? "") . "\t" .
                 ($item['fields']['Fields.1417']  ?? "") . "\t" .
@@ -1926,7 +1927,7 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.1419']  ?? "") . "\t" .
                 ($item['fields']['Fields.1819']  ?? "") . "\t" .
                 ($item['fields']['Fields.1041']  ?? "") . "\t" .
-                (isset($item['fields']['Fields.Log.MS.Date.Docs Returned']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Docs Returned'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.Log.MS.Date.Docs Returned']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Docs Returned'])) : "") . "\t" .
                 ($item['fields']['Fields.TPO.X30'] ?? "") . "\t" .
                 ($item['fields']['Fields.1396']  ?? "") . "\t" .
                 ($item['fields']['Fields.TPO.X14'] ?? "") . "\t" .
@@ -1937,24 +1938,24 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.1401']  ?? "") . "\t" .
                 ($item['fields']['Fields.3261']  ?? "") . "\t" .
                 ($item['fields']['Fields.65']  ?? "") . "\t" .
-                (isset($item['fields']['Fields.762']) ? date('m/d/Y', strtotime($item['fields']['Fields.762'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.762']) ? date('m/d/Y', strtotime($item['fields']['Fields.762'])) : "") . "\t" .
                 ($item['fields']['Fields.TPO.X63'] ?? "") . "\t" .
                 ($item['fields']['Fields.3332']  ?? "") . "\t" .
                 ($item['fields']['Fields.3']  ?? "") . "\t" .
                 ($item['fields']['Fields.4']  ?? "") . "\t" .
                 ($item['fields']['Fields.1993']  ?? "") . "\t" .
-                (isset($item['fields']['Fields.Log.MS.Date.Decision']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Decision'])) : "") . "\t" .
-                (isset($item['fields']['Fields.Log.MS.Date.Final Approval']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Final Approval'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.Log.MS.Date.Decision']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Decision'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.Log.MS.Date.Final Approval']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Final Approval'])) : "") . "\t" .
                 ($item['fields']['Fields.ORGID'] ?? "") . "\t" .
                 ($item['fields']['Fields.CUST16FV'] ?? "") . "\t" .
-                (isset($item['fields']['Fields.3143']) ? date('m/d/Y', strtotime($item['fields']['Fields.3143'])) : "") . "\t" .
-                (isset($item['fields']['Fields.3152']) ? date('m/d/Y', strtotime($item['fields']['Fields.3152'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.3143']) ? date('m/d/Y', strtotime($item['fields']['Fields.3143'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.3152']) ? date('m/d/Y', strtotime($item['fields']['Fields.3152'])) : "") . "\t" .
                 ($item['fields']['Fields.LoanTeamMember.Email.File Starter'] ?? "") . "\t" .
                 ($item['fields']['Fields.LoanTeamMember.Email.Loan Officer'] ?? "") . "\t" .
                 ($item['fields']['Fields.LoanTeamMember.Name.File Starter'] ?? "") . "\t" .
                 ($item['fields']['Fields.LoanTeamMember.Name.Loan Officer'] ?? "") . "\t" .
-                (isset($item['fields']['Fields.Log.MS.Date.Processing']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Processing'])) : "") . "\t" .
-                (isset($item['fields']['Fields.Log.MS.Date.Pre-approval']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Pre-approval'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.Log.MS.Date.Processing']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Processing'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.Log.MS.Date.Pre-approval']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Pre-approval'])) : "") . "\t" .
                 ($item['fields']['Fields.MORNET.X67'] ?? "") . "\t" .
                 ($item['fields']['Fields.CX.SHIPSETUPDAYS'] ?? "") . "\t" .
                 ($item['fields']['Fields.CX.SHIPPREAPPROVEDAYS'] ?? "") . "\t" .
@@ -1968,7 +1969,7 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.CX.SHIPSHIPDAYS'] ?? "") . "\t" .
                 ($item['fields']['Fields.CX.SHIPSUSPENSECLEARDAYS'] ?? "") . "\t" .
                 ($item['fields']['Fields.CX.SHIPPURCHASEDAYS'] ?? "") . "\t" .
-                (isset($item['fields']['Fields.Log.MS.Date.PTD Processing']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.PTD Processing'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.Log.MS.Date.PTD Processing']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.PTD Processing'])) : "") . "\t" .
                 ($item['fields']['Fields.2247'] ?? "") . "\t" .
                 ($item['fields']['Fields.2248'] ?? "") . "\t" .
                 ($item['fields']['Fields.2249'] ?? "") . "\t" .
@@ -1977,33 +1978,33 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.2252'] ?? "") . "\t" .
                 ($item['fields']['Fields.LoanTeamMember.Name.Account Manager'] ?? "") . "\t" .
                 ($item['fields']['Fields.LoanTeamMember.Name.Jr. Underwriter'] ?? "") . "\t" .
-                (isset($item['fields']['Fields.ISPAY.Escrow.0.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.0.DATE'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.ISPAY.Escrow.0.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.0.DATE'])) : "") . "\t" .
                 ($item['fields']['Fields.ISPAY.Escrow.0.ESCROWTYPE'] ?? "") . "\t" .
                 ($item['fields']['Fields.ISPAY.Escrow.0.INTNAME'] ?? "") . "\t" .
                 (isset($item['fields']['Fields.ISPAY.Escrow.0.AMT']) ? (str_replace(',', '', $item['fields']['Fields.ISPAY.Escrow.0.AMT'])) : "") . "\t" .
                 (isset($item['fields']['Fields.NEWHUD.X1719']) ? (str_replace(',', '', $item['fields']['Fields.NEWHUD.X1719'])) : "") . "\t" .
                 ($item['fields']['Fields.TPO.X54']  ?? "") . "\t" .
-                (isset($item['fields']['Fields.749']) ? date('m/d/Y', strtotime($item['fields']['Fields.749'])) : "") . "\t" .
-                (isset($item['fields']['Fields.Log.MS.Date.Funding']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Funding'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.749']) ? date('m/d/Y', strtotime($item['fields']['Fields.749'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.Log.MS.Date.Funding']) ? date('m/d/Y', strtotime($item['fields']['Fields.Log.MS.Date.Funding'])) : "") . "\t" .
                 ($item['fields']['Fields.799']  ?? "") . "\t" .
                 ($item['fields']['Fields.3238']  ?? "") . "\t" .
-                (isset($item['fields']['Fields.3197']) ? date('m/d/Y', strtotime($item['fields']['Fields.3197'])) : "") . "\t" .
-                (isset($item['fields']['Fields.ISPAY.Escrow.1.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.1.DATE'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.3197']) ? date('m/d/Y', strtotime($item['fields']['Fields.3197'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.ISPAY.Escrow.1.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.1.DATE'])) : "") . "\t" .
                 ($item['fields']['Fields.ISPAY.Escrow.1.ESCROWTYPE']  ?? "") . "\t" .
                 ($item['fields']['Fields.ISPAY.Escrow.1.INTNAME']  ?? "") . "\t" .
                 (isset($item['fields']['Fields.ISPAY.Escrow.1.AMT']) ? (str_replace(',', '', $item['fields']['Fields.ISPAY.Escrow.1.AMT'])) : "") . "\t" .
                 ($item['fields']['Fields.1991']  ?? "") . "\t" .
                 ($item['fields']['Fields.EDISCLOSEDTRK.FulfilledBy.1']  ?? "") . "\t" .
                 ($item['fields']['Fields.EDISCLOSEDTRK.SentDate.1']  ?? "") . "\t" .
-                (isset($item['fields']['Fields.ISPAY.Escrow.2.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.2.DATE'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.ISPAY.Escrow.2.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.2.DATE'])) : "") . "\t" .
                 ($item['fields']['Fields.ISPAY.Escrow.2.ESCROWTYPE']  ?? "") . "\t" .
                 ($item['fields']['Fields.ISPAY.Escrow.2.INTNAME']  ?? "") . "\t" .
                 (isset($item['fields']['Fields.ISPAY.Escrow.2.AMT']) ? (str_replace(',', '', $item['fields']['Fields.ISPAY.Escrow.2.AMT'])) : "") . "\t" .
-                (isset($item['fields']['Fields.ISPAY.Escrow.3.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.3.DATE'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.ISPAY.Escrow.3.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.3.DATE'])) : "") . "\t" .
                 ($item['fields']['Fields.ISPAY.Escrow.3.ESCROWTYPE']  ?? "") . "\t" .
                 ($item['fields']['Fields.ISPAY.Escrow.3.INTNAME']  ?? "") . "\t" .
                 (isset($item['fields']['Fields.ISPAY.Escrow.3.AMT']) ? (str_replace(',', '', $item['fields']['Fields.ISPAY.Escrow.3.AMT'])) : "") . "\t" .
-                (isset($item['fields']['Fields.ISPAY.Escrow.4.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.4.DATE'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.ISPAY.Escrow.4.DATE']) ? date('m/d/Y', strtotime($item['fields']['Fields.ISPAY.Escrow.4.DATE'])) : "") . "\t" .
                 ($item['fields']['Fields.ISPAY.Escrow.4.ESCROWTYPE']  ?? "") . "\t" .
                 ($item['fields']['Fields.ISPAY.Escrow.4.INTNAME']  ?? "") . "\t" .
                 (isset($item['fields']['Fields.ISPAY.Escrow.4.AMT']) ? (str_replace(',', '', $item['fields']['Fields.ISPAY.Escrow.4.AMT'])) : "") . "\t" .
@@ -2032,9 +2033,9 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.740']   ?? "") . "\t" .
                 ($item['fields']['Fields.742']   ?? "") . "\t" .
                 ($item['fields']['Fields.1401']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.761']) ? date('m/d/Y', strtotime($item['fields']['Fields.761'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.761']) ? date('m/d/Y', strtotime($item['fields']['Fields.761'])) : "") . "\t" .
                 ($item['fields']['Fields.432']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.762']) ? date('m/d/Y', strtotime($item['fields']['Fields.762'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.762']) ? date('m/d/Y', strtotime($item['fields']['Fields.762'])) : "") . "\t" .
                 ($item['fields']['Fields.VASUMM.X23']   ?? "") . "\t" .
                 ($item['fields']['Fields.2293']   ?? "") . "\t" .
                 ($item['fields']['Fields.2294']   ?? "") . "\t" .
@@ -2172,10 +2173,10 @@ class GetLoanInfoJob implements ShouldQueue
                 (isset($item['fields']['Fields.CD1.X14']) ? (str_replace(',', '', $item['fields']['Fields.CD1.X14'])) : "") . "\t" .
                 (isset($item['fields']['Fields.2']) ? (str_replace(',', '', $item['fields']['Fields.2'])) : "") . "\t" .
                 (isset($item['fields']['Fields.1109']) ? (str_replace(',', '', $item['fields']['Fields.1109'])) : "") . "\t" .
-                (isset($item['fields']['Fields.1996']) ? date('m/d/Y', strtotime($item['fields']['Fields.1996'])) : "") . "\t" .
-                (isset($item['fields']['Fields.682']) ? date('m/d/Y', strtotime($item['fields']['Fields.682'])) : "") . "\t" .
-                (isset($item['fields']['Fields.3514']) ? date('m/d/Y', strtotime($item['fields']['Fields.3514'])) : "") . "\t" .
-                (isset($item['fields']['Fields.78']) ? date('m/d/Y', strtotime($item['fields']['Fields.78'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.1996']) ? date('m/d/Y', strtotime($item['fields']['Fields.1996'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.682']) ? date('m/d/Y', strtotime($item['fields']['Fields.682'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.3514']) ? date('m/d/Y', strtotime($item['fields']['Fields.3514'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.78']) ? date('m/d/Y', strtotime($item['fields']['Fields.78'])) : "") . "\t" .
                 ($item['fields']['Fields.4000']   ?? "") . "\t" .
                 ($item['fields']['Fields.4002']   ?? "") . "\t" .
                 ($item['fields']['Fields.4001']   ?? "") . "\t" .
@@ -2196,9 +2197,9 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.1177']   ?? "") . "\t" .
                 (isset($item['fields']['Fields.356']) ? (str_replace(',', '', $item['fields']['Fields.356'])) : "") . "\t" .
                 ($item['fields']['Fields.2353']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.L770']) ? date('m/d/Y', strtotime($item['fields']['Fields.L770'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.L770']) ? date('m/d/Y', strtotime($item['fields']['Fields.L770'])) : "") . "\t" .
                 ($item['fields']['Fields.1051']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.2023']) ? date('m/d/Y', strtotime($item['fields']['Fields.2023'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.2023']) ? date('m/d/Y', strtotime($item['fields']['Fields.2023'])) : "") . "\t" .
                 (isset($item['fields']['Fields.334']) ? (str_replace(',', '', $item['fields']['Fields.334'])) : "") . "\t" .
                 (isset($item['fields']['Fields.1191']) ? (str_replace(',', '', $item['fields']['Fields.1191'])) : "") . "\t" .
                 (isset($item['fields']['Fields.CD2.XSTG']) ? (str_replace(',', '', $item['fields']['Fields.CD2.XSTG'])) : "") . "\t" .
@@ -2217,16 +2218,16 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.353']   ?? "") . "\t" .
                 ($item['fields']['Fields.742']   ?? "") . "\t" .
                 ($item['fields']['Fields.2977']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.2365']) ? date('m/d/Y', strtotime($item['fields']['Fields.2365'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.2365']) ? date('m/d/Y', strtotime($item['fields']['Fields.2365'])) : "") . "\t" .
                 ($item['fields']['Fields.2364']   ?? "") . "\t" .
                 ($item['fields']['Fields.541']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.NOTICES.X96']) ? date('m/d/Y', strtotime($item['fields']['Fields.NOTICES.X96'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.NOTICES.X96']) ? date('m/d/Y', strtotime($item['fields']['Fields.NOTICES.X96'])) : "") . "\t" .
                 ($item['fields']['Fields.2363']   ?? "") . "\t" .
                 ($item['fields']['Fields.Document.Company.Flood Certificate']   ?? "") . "\t" .
                 ($item['fields']['Fields.Document.Company.Mortgate Insurance']   ?? "") . "\t" .
                 ($item['fields']['Fields.1612']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.1402']) ? date('m/d/Y', strtotime($item['fields']['Fields.1402'])) : "") . "\t" .
-                (isset($item['fields']['Fields.1403']) ? date('m/d/Y', strtotime($item['fields']['Fields.1403'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.1402']) ? date('m/d/Y', strtotime($item['fields']['Fields.1402'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.1403']) ? date('m/d/Y', strtotime($item['fields']['Fields.1403'])) : "") . "\t" .
                 ($item['fields']['Fields.13']   ?? "") . "\t" .
                 ($item['fields']['Fields.2364']   ?? "") . "\t" .
                 ($item['fields']['Fields.430']   ?? "") . "\t" .
@@ -2249,9 +2250,9 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.66#4']   ?? "") . "\t" .
                 ($item['fields']['Fields.2973']   ?? "") . "\t" .
                 ($item['fields']['Fields.109']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.3548']) ? date('m/d/Y', strtotime($item['fields']['Fields.3548'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.3548']) ? date('m/d/Y', strtotime($item['fields']['Fields.3548'])) : "") . "\t" .
                 ($item['fields']['Fields.3336']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.78']) ? (date('m/d/Y', strtotime(strtok($item['fields']['Fields.78'], " ") . '+1 day'))) : "") . "\t" .
+                (!empty($item['fields']['Fields.78']) ? (date('m/d/Y', strtotime(strtok($item['fields']['Fields.78'], " ") . '+1 day'))) : "") . "\t" .
                 ($item['fields']['Fields.VEND.X167']   ?? "") . "\t" .
                 ($item['fields']['Fields.NEWHUD.X337']   ?? "") . "\t" .
                 ($item['fields']['Fields.NEWHUD.X338']   ?? "") . "\t" .
@@ -2271,18 +2272,18 @@ class GetLoanInfoJob implements ShouldQueue
                 ($item['fields']['Fields.3658']   ?? "") . "\t" .
                 ($item['fields']['Fields.1059']   ?? "") . "\t" .
                 ($item['fields']['Fields.NOTICES.X50']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.3514']) ? date('m/d/Y', strtotime($item['fields']['Fields.3514'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.3514']) ? date('m/d/Y', strtotime($item['fields']['Fields.3514'])) : "") . "\t" .
                 ($item['fields']['Fields.LoanTeamMember.Name.File Starter']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.CX.HUD0141']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0141'])) : "") . "\t" .
-                (isset($item['fields']['Fields.CX.HUD0142']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0142'])) : "") . "\t" .
-                (isset($item['fields']['Fields.CX.HUD0241']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0241'])) : "") . "\t" .
-                (isset($item['fields']['Fields.CX.HUD0242']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0242'])) : "") . "\t" .
-                (isset($item['fields']['Fields.2370']) ? date('m/d/Y', strtotime($item['fields']['Fields.2370'])) : "") . "\t" .
-                (isset($item['fields']['Fields.1997']) ? date('m/d/Y', strtotime($item['fields']['Fields.1997'])) : "") . "\t" .
-                (isset($item['fields']['Fields.CX.HUD0144']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0144'])) : "") . "\t" .
-                (isset($item['fields']['Fields.CX.HUD0244']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0244'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.CX.HUD0141']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0141'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.CX.HUD0142']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0142'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.CX.HUD0241']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0241'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.CX.HUD0242']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0242'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.2370']) ? date('m/d/Y', strtotime($item['fields']['Fields.2370'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.1997']) ? date('m/d/Y', strtotime($item['fields']['Fields.1997'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.CX.HUD0144']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0144'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.CX.HUD0244']) ? date('m/d/Y', strtotime($item['fields']['Fields.CX.HUD0244'])) : "") . "\t" .
                 ($item['fields']['Fields.1894']   ?? "") . "\t" .
-                (isset($item['fields']['Fields.2397']) ? date('m/d/Y', strtotime($item['fields']['Fields.2397'])) : "") . "\t" .
+                (!empty($item['fields']['Fields.2397']) ? date('m/d/Y', strtotime($item['fields']['Fields.2397'])) : "") . "\t" .
                 ($item['fields']['Fields.VEND.X150']   ?? "") . "\t" .
                 ($item['fields']['Fields.VEND.X151']   ?? "") . "\t" .
                 ($item['fields']['Fields.VEND.X152']   ?? "") . "\t" .

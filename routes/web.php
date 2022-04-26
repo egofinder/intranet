@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentLetterController;
 use App\Http\Controllers\JobController;
 use Illuminate\Contracts\Queue\Job;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ Route::get('/job/delete-extra-loan/{id}', [JobController::class, 'destroy']);
 
 Route::post('/job/add-extra-loan', [JobController::class, 'store']);
 
-Route::get('/job/test', [JobController::class, 'test']);
+Route::get('/test', [TestController::class, 'index']);
 
 
 
