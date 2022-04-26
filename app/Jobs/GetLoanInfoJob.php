@@ -59,8 +59,8 @@ class GetLoanInfoJob implements ShouldQueue
                     "terms" => [
                         [
                             "canonicalName" => "Fields.749",
-                            // "value" => $date,
-                            "value" => '2022-04-17',
+                            "value" => $date,
+                            // "value" => '2022-04-17',
                             "matchType" => "greaterThan"
                         ],
                         [
@@ -1422,27 +1422,20 @@ class GetLoanInfoJob implements ShouldQueue
         }
 
 
+        $loanNumbers = array();
         $extra_loans = JobLoanInfoExtraLoan::all();
-        $loan_1 = $extra_loans[0]->loanNumber;
-        $loan_2 = $extra_loans[1]->loanNumber;
+        foreach ($extra_loans as $loanNumber) {
+            array_push($loanNumbers, $loanNumber->loanNumber);
+        }
 
+        $access_token = Token::find(1)->access_token;
         $response = Http::acceptJson()->withToken($access_token)->post(
-            'https://api.elliemae.com/encompass/v1/loanPipeline',
+            'https://api.elliemae.com/encompass/v3/loanPipeline',
             [
                 "filter" => [
-                    "operator" => "or",
-                    "terms" => [
-                        [
-                            "canonicalName" => "Fields.364",
-                            "value" => "$loan_1",
-                            "matchType" => "exact"
-                        ],
-                        [
-                            "canonicalName" => "Fields.364",
-                            "value" => "$loan_2",
-                            "matchType" => "exact"
-                        ],
-                    ]
+                    "canonicalName" => "Fields.364",
+                    "value" => $loanNumbers,
+                    "matchType" => "MultiValue"
                 ],
                 "fields" => [
                     "Fields.2",
