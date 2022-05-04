@@ -19,10 +19,10 @@ class TokenController extends Controller
                 'https://api.elliemae.com/oauth2/v1/token',
                 [
                     'grant_type' => 'password',
-                    'username' => 'benjaminj@encompass:BE799207',
-                    'password' => 'EEQorzkrl1324!',
-                    'client_id' => 'thq12xx',
-                    'client_secret' => 'cx7mMw15qJ1j7o$YbyaFM5VfY4KLUIVRN*HEENj7&N!b*h$&IVfc$593l@CG832^'
+                    'username' => env('ENCOMPASS_USER_NAME'),
+                    'password' => env('ENCOMPASS_PASSWORD'),
+                    'client_id' => env('ENCOMPASS_CLIENT_ID'),
+                    'client_secret' => env('ENCOMPASS_CLIENT_SECRET')
                 ]
             );
         $decoded = json_decode($response->body(), false);
@@ -43,8 +43,8 @@ class TokenController extends Controller
             ->post(
                 'https://api.elliemae.com/oauth2/v1/token/introspection',
                 [
-                    'client_id' => 'thq12xx',
-                    'client_secret' => 'cx7mMw15qJ1j7o$YbyaFM5VfY4KLUIVRN*HEENj7&N!b*h$&IVfc$593l@CG832^',
+                    'client_id' => env('ENCOMPASS_CLIENT_ID'),
+                    'client_secret' => env('ENCOMPASS_CLIENT_SECRET'),
                     'token' => $token->access_token
                 ]
             );
