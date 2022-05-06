@@ -212,8 +212,8 @@ class PaymentLetterController extends Controller
             $loans[$item['fields']['Fields.364']]['SERVICE.X13'] = $final_result[$item['fields']['Fields.364']]['statementDate'];
             $loans[$item['fields']['Fields.364']]['SERVICE.X14'] = date('m/d/Y', strtotime($final_result[$item['fields']['Fields.364']]['paymentDue']));
             $loans[$item['fields']['Fields.364']]['SERVICE.X15'] = date('m/d/Y', (strtotime($final_result[$item['fields']['Fields.364']]['paymentDue']) + (($item['fields']['Fields.672'] - 1) * 3600 * 24)));
-            $loans[$item['fields']['Fields.364']]['SERVICE.X20'] = number_format(floatval($final_result[$item['fields']['Fields.364']]['impound']), 2);
-            $loans[$item['fields']['Fields.364']]['SERVICE.X24'] = number_format(floatval(str_replace(",", "", $final_result[$item['fields']['Fields.364']]['total'])), 2);
+            $loans[$item['fields']['Fields.364']]['SERVICE.X20'] = $final_result[$item['fields']['Fields.364']]['impound'];
+            $loans[$item['fields']['Fields.364']]['SERVICE.X24'] = $final_result[$item['fields']['Fields.364']]['total'];
             $loans[$item['fields']['Fields.364']]['SERVICE.X25'] = round(floatval(str_replace(",", "", $loans[$item['fields']['Fields.364']]['SERVICE.X24'])) * $item['fields']['Fields.674'] / 100, 2);
             $loans[$item['fields']['Fields.364']]['SERVICE.X26'] = number_format(round(floatval(str_replace(",", "", $loans[$item['fields']['Fields.364']]['SERVICE.X24'])) + floatval(str_replace(",", "", $loans[$item['fields']['Fields.364']]['SERVICE.X25'])), 2), 2);
             $loans[$item['fields']['Fields.364']]['SERVICE.X32'] = ($item['fields']['Fields.SERVICE.X32']) ? date('m/d/Y', strtotime($item['fields']['Fields.SERVICE.X32'])) : "-";
@@ -257,7 +257,8 @@ class PaymentLetterController extends Controller
             $loans[$item['fields']['Fields.364']]['SERVICE.X82'] = (!empty($loans[$item['fields']['Fields.364']]['SERVICE.X82'])) ? ('$' . $loans[$item['fields']['Fields.364']]['SERVICE.X82']) : '-';
         }
 
-        // dd($final_result);
+        // dump($final_result);
+        // dump($loans);
         return view('paymentletter.index')->with('loans', $loans);
     }
 
@@ -516,7 +517,7 @@ class PaymentLetterController extends Controller
             $loans[$count]['SERVICE.X82'] = !empty($loans[$count]['SERVICE.X82']) ? ('$' . $loans[$count]['SERVICE.X82']) : '-';
         }
 
-        dd($loans);
-        // return view('paymentletter.index', compact('loans'));
+        // dd($loans);
+        return view('paymentletter.index', compact('loans'));
     }
 }
