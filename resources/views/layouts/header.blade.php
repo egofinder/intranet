@@ -34,6 +34,11 @@
                         <a class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
                             href="/download" data-mdb-ripple="true" data-mdb-ripple-color="light">Download</a>
                     </li>
+                    <li class="nav-item mb-2 lg:mb-0">
+                        <a class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                            href="/accounting/upload-image" data-mdb-ripple="true" data-mdb-ripple-color="light">Merge
+                            Image</a>
+                    </li>
                 </ul>
             </div>
         </div>

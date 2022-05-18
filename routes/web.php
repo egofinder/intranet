@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\DownloadViewController;
 use App\Http\Controllers\ExcelTemplateController;
 use App\Http\Controllers\TokenController;
@@ -42,7 +43,9 @@ Route::post('/job/add-extra-loan', [JobController::class, 'store']);
 
 Route::get('/test', [TestController::class, 'index']);
 
+Route::post('/accounting/merge-image', [AccountingController::class, 'merge_image'])->name('merge.image');
 
+Route::get('/accounting/upload-image', [AccountingController::class, 'index']);
 
 
 Route::get('/get-tpo-info', function () {
