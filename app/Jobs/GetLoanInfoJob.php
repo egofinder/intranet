@@ -64,12 +64,12 @@ class GetLoanInfoJob implements ShouldQueue
                             "matchType" => "greaterThan"
                         ],
                         [
-                            "canonicalName" => "Fields.CUST11FV",
+                            "canonicalName" => "Fields.1393",
                             "value" => "Application denied",
                             "matchType" => "notEquals"
                         ],
                         [
-                            "canonicalName" => "Fields.CUST11FV",
+                            "canonicalName" => "Fields.1393",
                             "value" => "Application withdrawn",
                             "matchType" => "notEquals"
                         ]
