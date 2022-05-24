@@ -70,3 +70,8 @@ Route::get('/excel-template/cs-funding/{loanNumber}/download', [ExcelTemplateCon
 
 Route::get('/excel-template/vista-point/{loanNumber}', [ExcelTemplateController::class, 'vistaPoint']);
 Route::get('/excel-template/vista-point/{loanNumber}/download', [ExcelTemplateController::class, 'vistaPointDownload']);
+
+
+Route::get('/timecard', function () {
+    return "hihi";
+});
