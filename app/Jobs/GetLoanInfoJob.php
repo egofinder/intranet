@@ -54,14 +54,24 @@ class GetLoanInfoJob implements ShouldQueue
                         "order" => "asc"
                     ],
                 ],
-                "operator" => "and",
                 "filter" => [
+                    "operator" => "and",
                     "terms" => [
                         [
-                            "canonicalName" => "Fields.749",
-                            "value" => $date,
-                            // "value" => '2022-04-17',
-                            "matchType" => "greaterThan"
+                            "operator" => "or",
+                            "terms" => [
+                                [
+                                    "canonicalName" => "Fields.749",
+                                    "value" => $date,
+                                    // "value" => '2022-04-17',
+                                    "matchType" => "greaterThan"
+                                ],
+                                [
+                                    "canonicalName" => "Fields.749",
+                                    "value" => '',
+                                    "matchType" => "Exact"
+                                ],
+                            ]
                         ],
                         [
                             "canonicalName" => "Fields.1393",
