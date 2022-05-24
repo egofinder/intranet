@@ -257,7 +257,9 @@ class GetLoanInfoJob implements ShouldQueue
             "ClosingPackageDate" . "\t" .
             "DisclosureConditionClearedBy" . "\t" .
             "DisclosureConditionClearedDate" . "\t" .
-            "EstimatedEscrow1" . "\n";
+            "EstimatedEscrow1" . "\t" .
+            "QCReviewType1" . "\t" .
+            "QCReviewType2" . "\n";
 
         $encompass_buyside =
             "LoanNumber" . "\t" .
@@ -839,6 +841,8 @@ class GetLoanInfoJob implements ShouldQueue
                         "Fields.CX.SHIPSUSPCOORDINATOR",
                         "Fields.CX.SHIPSUSPENSECLEARDAYS",
                         "Fields.CX.WC.PMI.PAID.BY",
+                        "Fields.CX.QC.REVIEWTYPE1",
+                        "Fields.CX.QC.REVIEWTYPE2",
                         "Fields.Document.Company.Flood Certificate",
                         "Fields.Document.Company.Mortgate Insurance",
                         "Fields.EDISCLOSEDTRK.FulfilledBy.1",
@@ -1133,7 +1137,10 @@ class GetLoanInfoJob implements ShouldQueue
                     (isset($item['fields']['Fields.CX.SHIPCLOSINGPACKAGE']) ? (str_replace(',', '', $item['fields']['Fields.CX.SHIPCLOSINGPACKAGE'])) : "") . "\t" .
                     ($item['fields']['Fields.CX.CONDITIONCLEAREDBY']  ?? "") . "\t" .
                     (isset($item['fields']['Fields.CX.CONDITIONCLEAREDDATE']) ? (str_replace(',', '', $item['fields']['Fields.CX.CONDITIONCLEAREDDATE'])) : "") . "\t" .
-                    (isset($item['fields']['Fields.CD1.X12']) ? (str_replace(',', '', $item['fields']['Fields.CD1.X12'])) : "") . "\n";
+                    (isset($item['fields']['Fields.CD1.X12']) ? (str_replace(',', '', $item['fields']['Fields.CD1.X12'])) : "") . "\t" .
+                    ($item['fields']['Fields.CX.QC.REVIEWTYPE1']  ?? "") . "\t" .
+                    ($item['fields']['Fields.CX.QC.REVIEWTYPE2']  ?? "") . "\n";
+
 
                 $encompass_buyside .=
                     ($item['fields']['Fields.364']   ?? "") . "\t" .
