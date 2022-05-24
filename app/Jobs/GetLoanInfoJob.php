@@ -68,7 +68,7 @@ class GetLoanInfoJob implements ShouldQueue
                                 ],
                                 [
                                     "canonicalName" => "Fields.749",
-                                    "value" => '',
+                                    "value" => "",
                                     "matchType" => "Exact"
                                 ],
                             ]
@@ -975,6 +975,7 @@ class GetLoanInfoJob implements ShouldQueue
             $subservicing_data = null;
 
             foreach ($sample as $item) {
+                if (empty($item['fields']['Fields.364']) || !is_numeric($item['fields']['Fields.364'])) continue;
                 $encompass_report .=
                     (!empty($item['fields']['Fields.745']) ? date('m/d/Y', strtotime($item['fields']['Fields.745'])) : "") . "\t" .
                     (!empty($item['fields']['Fields.2370']) ? date('m/d/Y', strtotime($item['fields']['Fields.2370'])) : "") . "\t" .
