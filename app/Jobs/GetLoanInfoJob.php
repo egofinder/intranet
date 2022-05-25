@@ -2324,13 +2324,13 @@ class GetLoanInfoJob implements ShouldQueue
 
 
 
-        $temp1 = Storage::disk('local')->get('output.txt');
-        $temp2 = Storage::disk('local')->get('output2.txt');
-        $temp3 = Storage::disk('local')->get('output3.txt');
+        // $temp1 = Storage::disk('local')->get('output.txt');
+        // $temp2 = Storage::disk('local')->get('output2.txt');
+        // $temp3 = Storage::disk('local')->get('output3.txt');
 
-        Storage::disk('ftp')->put('output.txt', $temp1);
-        Storage::disk('ftp')->put('output2.txt', $temp2);
-        Storage::disk('ftp')->put('output3.txt', $temp3);
+        Storage::disk('ftp')->put('output.txt', Storage::disk('local')->get('output.txt'));
+        Storage::disk('ftp')->put('output2.txt', Storage::disk('local')->get('output2.txt'));
+        Storage::disk('ftp')->put('output3.txt', Storage::disk('local')->get('output3.txt'));
 
         $test = new TeamsNotificationController;
         $test->notificationForLoanInfo();
