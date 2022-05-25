@@ -150,7 +150,6 @@ class GetTPOInfoJob implements ShouldQueue
                 Storage::disk('local')->append('outputtpo.txt', $output_TPO);
             }
         }
-        // $temp = Storage::disk('local')->get('outputtpo.txt');
         Storage::disk('ftp')->put('outputtpo.txt', Storage::disk('local')->get('outputtpo.txt'));
         $test = new TeamsNotificationController;
         $test->notificationForTPO();

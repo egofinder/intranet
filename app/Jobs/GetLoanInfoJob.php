@@ -90,7 +90,8 @@ class GetLoanInfoJob implements ShouldQueue
 
         $loan_count = $response->header('X-Total-Count');
         $loan_cursor = $response->header('X-Cursor');
-        $max_loop = ($loan_count - ($loan_count % 250)) / 250;
+        $max_loop = intdiv($loan_count, 250);
+        // $max_loop = ($loan_count - ($loan_count % 250)) / 250;
 
         Storage::disk('local')->delete(['output.txt', 'output2.txt', 'output3.txt']);
 
@@ -2319,14 +2320,6 @@ class GetLoanInfoJob implements ShouldQueue
         Storage::disk('local')->append('output.txt', $encompass_report, null);
         Storage::disk('local')->append('output2.txt', $encompass_buyside, null);
         Storage::disk('local')->append('output3.txt', $subservicing_data, null);
-
-
-
-
-
-        // $temp1 = Storage::disk('local')->get('output.txt');
-        // $temp2 = Storage::disk('local')->get('output2.txt');
-        // $temp3 = Storage::disk('local')->get('output3.txt');
 
         Storage::disk('ftp')->put('output.txt', Storage::disk('local')->get('output.txt'));
         Storage::disk('ftp')->put('output2.txt', Storage::disk('local')->get('output2.txt'));
