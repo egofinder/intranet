@@ -41,7 +41,6 @@ Route::get('/job/delete-extra-loan/{id}', [JobController::class, 'destroy']);
 
 Route::post('/job/add-extra-loan', [JobController::class, 'store']);
 
-Route::get('/test', [TestController::class, 'index']);
 
 Route::post('/accounting/merge-image', [AccountingController::class, 'merge_image'])->name('merge.image');
 
@@ -72,6 +71,8 @@ Route::get('/excel-template/vista-point/{loanNumber}', [ExcelTemplateController:
 Route::get('/excel-template/vista-point/{loanNumber}/download', [ExcelTemplateController::class, 'vistaPointDownload']);
 
 
-Route::get('/timecard', function () {
-    return "hihi";
-});
+Route::get('/test', [TestController::class, 'index2']);
+
+Route::get('/timecard', [TestController::class, 'index']);
+Route::post('/timecard/store', [TestController::class, 'store']);
+ROute::post('/timecard/get-user-info', [TestController::class, 'getUserInfo']);
