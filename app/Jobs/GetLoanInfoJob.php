@@ -2325,14 +2325,14 @@ class GetLoanInfoJob implements ShouldQueue
         Storage::disk('ftp')->put('output2.txt', Storage::disk('local')->get('output2.txt'));
         Storage::disk('ftp')->put('output3.txt', Storage::disk('local')->get('output3.txt'));
 
-        $test = new TeamsNotificationController;
-        $test->notificationForLoanInfo();
+//         $test = new TeamsNotificationController;
+//         $test->notificationForLoanInfo();
     }
 
 
     public function failed()
     {
-        $test = new TeamsNotificationController;
-        $test->notificationForFailed();
+//         $test = new TeamsNotificationController;
+//         $test->notificationForFailed();
     }
 }
